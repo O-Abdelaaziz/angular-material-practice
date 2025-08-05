@@ -35,6 +35,3 @@ body {
 .mat-drawer-inner-container {
   overflow: hidden !important;
 }
-.mat-mdc-nav-list .mat-mdc-list-item {
-  border-radius: 0 !important;
-}

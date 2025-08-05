@@ -1,0 +1,21 @@
+<div class="sidenav-header">
+  <div class="image-box" [style.width.px]="profilePictureSize()" [style.border-width]="profileBorderSize()"
+       [style.height.px]="profilePictureSize()">
+    <img src="./avatar.png"
+         [width]="profilePictureSize()"
+         [height]="profilePictureSize()"
+         alt="avatar">
+  </div>
+  <div class="header-text" [class.hide-header-text]="sideNavCollapsed()">
+    <h2>John Doe</h2>
+    <p>Admin</p>
+  </div>
+</div>
+
+<mat-nav-list>
+  <div mat-subheader [class.hide-mat-subheader]="sideNavCollapsed()">Navigation</div>
+  @for (item of menuItems(); track item.label) {
+    <app-menu-item [item]="item" [collapsed]="sideNavCollapsed()"></app-menu-item>
+  }
+</mat-nav-list>
+

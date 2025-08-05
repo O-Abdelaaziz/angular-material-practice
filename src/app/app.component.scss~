@@ -42,6 +42,6 @@ mat-sidenav-content {
 
 :host {
   @include mat.sidenav-overrides((
-    container-shape:0px
+    container-shape:0
   ));
 }

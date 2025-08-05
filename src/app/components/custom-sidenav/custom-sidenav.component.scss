@@ -1,0 +1,61 @@
+:host * {
+  transition: all 500ms ease-in-out !important;
+}
+
+.mat-mdc-nav-list .mat-mdc-list-item {
+  border-radius: 0;
+}
+
+.sidenav-header {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  //background-color: #3f51b5;
+  text-align: center;
+
+  .image-box {
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 5px;
+    border: 2px solid var(--mat-sys-on-surface);
+
+    img {
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+
+  .header-text {
+    height: 3rem;
+
+    > h2 {
+      margin: 0;
+      color: var(--mat-sys-on-surface);
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    > p {
+      margin: 0;
+      color: var(--mat-sys-on-surface-variant);
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.hide-header-text {
+  opacity: 0;
+  height: 0 !important;
+}
+
+.hide-mat-subheader {
+  opacity: 0;
+  height: 0;
+}
+
+
