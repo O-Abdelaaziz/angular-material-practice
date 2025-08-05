@@ -27,5 +27,5 @@ export class CustomSidenavComponent {
   public profilePictureSize = computed(() => this.sideNavCollapsed() ? '32' : '92');
   public profileBorderSize = computed(() => this.sideNavCollapsed() ? '1px' : '2px')
 
-  public _menuItems = signal<MenuItem[]>(menuItems);
+  public menuItems = signal<MenuItem[]>(menuItems);
 }

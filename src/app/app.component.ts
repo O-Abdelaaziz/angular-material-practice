@@ -12,6 +12,7 @@ import {CustomSidenavComponent} from './components/custom-sidenav/custom-sidenav
 })
 export class AppComponent {
   private collapsed = signal(false);
+
   public  sidenavWidth = computed(()=> this.isCollapsed ? '64px' : '250px');
 
   public get isCollapsed(): boolean {
@@ -21,16 +22,4 @@ export class AppComponent {
   public toggleCollapsed(): void {
     this.collapsed.set(!this.collapsed());
   }
-
-
-//   import { Renderer2, ElementRef, AfterViewInit } from '@angular/core';
-//
-// constructor(private renderer: Renderer2, private el: ElementRef) {}
-//
-// ngAfterViewInit() {
-//   const drawerInner = this.el.nativeElement.querySelector('.mat-drawer-inner-container');
-//   if (drawerInner) {
-//     this.renderer.setStyle(drawerInner, 'overflow', 'hidden');
-//   }
-// }
 }

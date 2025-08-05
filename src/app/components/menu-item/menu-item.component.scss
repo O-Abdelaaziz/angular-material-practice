@@ -10,22 +10,6 @@
 }
 
 .selected-menu-item {
-  //background-color: var(--mat-sys-on-surface);
-  //color: var(--mat-sys-on-primary);
-  //border-left: 5px solid var(--mat-sys-on-primary);
-  ////border-left-color: var(--mat-sys-on-primary);
-
   border-left-color: var(--mat-sys-on-surface);
   background: rgba(0, 0, 0, 0.05);
 }
-
-//.indented {
-//  @include mat.list-overrides((
-//    list-item-leading-icon-start-space: 32px
-//  ));
-//}
-
-
-//indented {
-//  --mat-list-list-item-leading-icon-start-space: 48px;
-//}

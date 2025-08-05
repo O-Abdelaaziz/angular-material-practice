@@ -27,7 +27,9 @@ import {MenuItem} from '../../interface/menu-item.type';
 export class MenuItemComponent {
   public item = input.required<MenuItem>();
   public collapsed = input(false);
+  // public collapsed = input.required<boolean>();
   public nestedMenuOpen = signal(false);
+  // public routeHistory = signal<string>('');
   public routeHistory = input<string>('');
   public level = computed(() => this.routeHistory().split('/').length - 1);
   public indentation = computed(() => this.collapsed() ? '16px' : `${(16 + (this.level() * 16))}px`);

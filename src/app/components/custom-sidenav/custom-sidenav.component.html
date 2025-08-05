@@ -14,7 +14,7 @@
 
 <mat-nav-list>
   <div mat-subheader [class.hide-mat-subheader]="sideNavCollapsed()">Navigation</div>
-  @for (item of menuItems(); track item.label) {
+  @for (item of _menuItems(); track item.label) {
     <app-menu-item [item]="item" [collapsed]="sideNavCollapsed()"></app-menu-item>
   }
 </mat-nav-list>

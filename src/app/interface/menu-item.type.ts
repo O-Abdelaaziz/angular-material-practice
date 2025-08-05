@@ -10,7 +10,6 @@ export type MenuItem = {
   component?: Type<unknown>
 }
 
-
 export const menuItems: MenuItem[] = [
   {
     icon: 'dashboard',
