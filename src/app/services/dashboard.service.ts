@@ -1,0 +1,127 @@
+import {computed, Injectable, signal} from '@angular/core';
+import {Widget} from '../interface/dashboard';
+import {SubscribersComponent} from '../pages/dashboard/widgets/subscribers/subscribers.component';
+import {ViewsComponent} from '../pages/dashboard/widgets/views/views.component';
+import {WatchTimeComponent} from '../pages/dashboard/widgets/watch-time/watch-time.component';
+import {RevenueComponent} from '../pages/dashboard/widgets/revenue/revenue.component';
+
+@Injectable()
+export class DashboardService {
+
+  public widgets = signal<Widget[]>(
+    [
+      {
+        id: 1,
+        label: 'Subscribers',
+        content: SubscribersComponent
+      },
+      {
+        id: 2,
+        label: 'Views',
+        content: ViewsComponent
+      }
+    ]
+  );
+
+  public addedWidgets = signal<Widget[]>([
+    {
+      id: 1,
+      label: 'Subscribers',
+      content: SubscribersComponent,
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke'
+    },
+    {
+      id: 2,
+      label: 'Views',
+      content: ViewsComponent,
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke'
+    },
+    {
+      id: 3,
+      label: 'Watch time',
+      content: WatchTimeComponent,
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke'
+    },
+    {
+      id: 4,
+      label: 'Revenue',
+      content: RevenueComponent,
+      rows: 1,
+      columns: 1,
+      backgroundColor: '#003f5c',
+      color: 'whitesmoke'
+    }
+  ]);
+
+  public widgetsToAdd = computed(() => {
+    const addedIds = this.addedWidgets().map(widget => widget.id);
+    return this.widgets().filter(widget => !addedIds.includes(widget.id));
+  })
+
+  public addWidget(widget: Widget) {
+    this.addedWidgets.set([...this.addedWidgets(), {...widget}])
+  }
+
+  public updateWidget(id: number, widget: Partial<Widget>) {
+    const index = this.addedWidgets().findIndex(w => w.id === id);
+    if (index !== -1) {
+      const newWidgets = [...this.addedWidgets()];
+      newWidgets[index] = {...newWidgets[index], ...widget};
+      this.addedWidgets.set(newWidgets);
+    }
+    // this.addedWidgets.set(this.addedWidgets().map(w => w.id === id ? {...w, ...widget} : w));
+  }
+
+  moveWidgetToRight(id: number) {
+    const index = this.addedWidgets().findIndex(w => w.id === id);
+    if (index !== -1) {
+      const newWidgets = [...this.addedWidgets()];
+      newWidgets.splice(index, 1);
+      newWidgets.splice(index + 1, 0, this.addedWidgets()[index]);
+      this.addedWidgets.set(newWidgets);
+    }
+  }
+
+  moveWidgetToRightOld(id: number) {
+    const index = this.addedWidgets().findIndex(w => w.id === id);
+    if (index === this.addedWidgets().length - 1) {
+      return;
+    }
+    const newWidgets = [...this.addedWidgets()];
+    [newWidgets[index], newWidgets[index + 1]] = [{...newWidgets[index + 1]}, {...newWidgets[index]}];
+    this.addedWidgets.set(newWidgets);
+  }
+
+  moveWidgetToLeft(id: number) {
+    const index = this.addedWidgets().findIndex(w => w.id === id);
+    if (index !== -1) {
+      const newWidgets = [...this.addedWidgets()];
+      newWidgets.splice(index, 1);
+      newWidgets.splice(index - 1, 0, this.addedWidgets()[index]);
+      this.addedWidgets.set(newWidgets);
+    }
+  }
+
+  moveWidgetToLeftOld(id: number) {
+    const index = this.addedWidgets().findIndex(w => w.id === id);
+    if (index === 0) {
+      return;
+    }
+    const newWidgets = [...this.addedWidgets()];
+    [newWidgets[index], newWidgets[index - 1]] = [{...newWidgets[index - 1]}, {...newWidgets[index]}];
+    this.addedWidgets.set(newWidgets);
+  }
+
+  deleteWidget(id: number) {
+    this.addedWidgets.set(this.addedWidgets().filter(w => w.id !== id));
+  }
+}

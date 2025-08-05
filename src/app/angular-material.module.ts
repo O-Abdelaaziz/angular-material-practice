@@ -1,18 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavContainer, MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
-export const materialModules=[
+export const materialModules = [
   MatToolbarModule,
   MatButtonModule,
   MatIconModule,
   MatSidenavModule,
   MatSidenavContainer,
-  MatListModule
+  MatListModule,
+  MatMenuModule,
+  MatButtonToggleModule
 ]
 
 @NgModule({
@@ -24,4 +27,5 @@ export const materialModules=[
     ...materialModules,
   ]
 })
-export class AngularMaterialModule { }
+export class AngularMaterialModule {
+}

@@ -1,6 +1,5 @@
 import {Type} from '@angular/core';
 import {PageComponent} from '../pages/page/page.component';
-import {DashboardComponent} from '../pages/dashboard/dashboard.component';
 
 export type MenuItem = {
   icon: string,
@@ -17,7 +16,7 @@ export const menuItems: MenuItem[] = [
     label: 'Dashboard',
     route: 'dashboard',
     extraInfo: false,
-    component: DashboardComponent
+    component: PageComponent
   },
   {
     icon: 'video_library',

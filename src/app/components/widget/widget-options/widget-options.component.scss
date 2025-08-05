@@ -1,0 +1,57 @@
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  //background: whitesmoke;
+  //color: black;
+  background: var(--mat-sys-surface-bright);
+  color: var(--mat-sys-on-surface-bright);
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  --mat-standard-button-toggle-height: 16px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  color: #7e0007;
+}
+
+.move-forward-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+.move-backward-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+}
+
