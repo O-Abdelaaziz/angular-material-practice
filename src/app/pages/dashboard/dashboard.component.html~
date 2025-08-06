@@ -13,12 +13,7 @@
     </button>
 
     @if (widgetsOpen()) {
-      <app-widgets-panel
-        cdkDropList
-        cdkDrag
-        (cdkDropListDropped)="widgetPutPack($event)"
-
-      ></app-widgets-panel>
+      <app-widgets-panel cdkDropList (cdkDropListDropped)="widgetPutPack($event)"></app-widgets-panel>
     }
 
     <!--  <mat-menu #menu="matMenu">-->

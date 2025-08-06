@@ -1,22 +1,24 @@
-import {Component, ElementRef, inject, OnInit, viewChild} from '@angular/core';
+import {Component, ElementRef, inject, OnInit, signal, viewChild} from '@angular/core';
 import {WidgetComponent} from '../../components/widget/widget.component';
 import {DashboardService} from '../../services/dashboard.service';
 import {AngularMaterialModule} from '../../angular-material.module';
 import {Widget} from '../../interface/dashboard';
 import {wrapGrid} from 'animate-css-grid';
 import {CdkDragDrop} from '@angular/cdk/drag-drop';
+import {WidgetsPanelComponent} from './widgets-panel/widgets-panel.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [WidgetComponent, AngularMaterialModule],
+  imports: [WidgetComponent, AngularMaterialModule, WidgetsPanelComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   providers: [DashboardService]
 })
 export class DashboardComponent implements OnInit {
 
-  store = inject(DashboardService);
+  public store = inject(DashboardService);
+  public widgetsOpen = signal(false);
 
   public onAddWidget(widget: Widget) {
     this.store.addWidget(widget);
@@ -34,7 +36,7 @@ export class DashboardComponent implements OnInit {
     const {
       previousContainer,
       container,
-      item: { data },
+      item: {data},
     } = event;
 
     if (data) {
@@ -43,5 +45,17 @@ export class DashboardComponent implements OnInit {
     }
 
     this.store.updateWidgetPosition(previousContainer.data, container.data);
+  }
+
+  public toggleWidgetsPanel() {
+    this.widgetsOpen.set(!this.widgetsOpen());
+  }
+
+  widgetPutPack($event: CdkDragDrop<number, any>) {
+    const {previousContainer} = $event;
+    this.store.deleteWidget(previousContainer.data);
+    // if (previousContainer) {
+    //   this.store.deleteWidget(previousContainer.data);
+    // }
   }
 }
