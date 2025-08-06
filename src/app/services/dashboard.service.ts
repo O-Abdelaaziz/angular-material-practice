@@ -153,7 +153,7 @@ export class DashboardService {
     newWidgets.splice(positionToAdd, 0, widgetToAdd);
     this.addedWidgets.set(newWidgets);
   }
-  
+
 
   updateWidgetPosition(sourceWidgetId: number, targetWidgetId: number) {
     const sourceIndex = this.addedWidgets().findIndex((w) => w.id === sourceWidgetId);
