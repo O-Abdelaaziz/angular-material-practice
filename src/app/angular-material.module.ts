@@ -6,6 +6,7 @@ import {MatSidenavContainer, MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {CdkDrag, CdkDragPlaceholder, CdkDropList, CdkDropListGroup} from '@angular/cdk/drag-drop';
 
 export const materialModules = [
   MatToolbarModule,
@@ -15,7 +16,11 @@ export const materialModules = [
   MatSidenavContainer,
   MatListModule,
   MatMenuModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  CdkDropListGroup,
+  CdkDropList,
+  CdkDrag,
+  CdkDragPlaceholder,
 ]
 
 @NgModule({

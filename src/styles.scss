@@ -83,3 +83,12 @@ body {
 .text-green {
   color: #d1495b;
 }
+
+
+.cdk-drop-list-dragging {
+  //background-color: #d1495b;
+  //color: white;
+  opacity: 0.5;
+  border-left: 5px solid #d1495b;
+  padding-left: 8px;
+}

@@ -1,9 +1,14 @@
 <!--[ngStyle]="{backgroundColor: data().backgroundColor, color: data().color}" var(--mat-sys-on-surface-bright)-->
-<div class="container" [style.background-color]="data().backgroundColor ?? 'var(--mat-sys-surface-bright)'" [style.color]="data().color ?? 'inherit'">
+<div class="container"
+     [style.background-color]="data().backgroundColor ?? 'var(--mat-sys-surface-bright)'"
+     [style.color]="data().color ?? 'inherit'"
+     cdkDragPreviewContainer="parent"
+     cdkDrag>
   <h3 class="m-0"> {{ data().label }}</h3>
   <button mat-icon-button class="settings"
           (click)="showOptions.set(!showOptions())"
-         [style.--mdc-icon-button-icon-color]="data().color ?? 'inherit'" >
+          [style.--mdc-icon-button-icon-color]="data().color ?? 'inherit'"
+  >
     <mat-icon>settings</mat-icon>
   </button>
   <ng-container [ngComponentOutlet]="data().content"/>
@@ -11,4 +16,8 @@
   @if (showOptions()) {
     <app-widget-options [(showOptions)]="showOptions" [data]="data()"></app-widget-options>
   }
+
+  <div *cdkDragPlaceholder>
+
+  </div>
 </div>

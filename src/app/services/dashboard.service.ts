@@ -7,6 +7,7 @@ import {RevenueComponent} from '../pages/dashboard/widgets/revenue/revenue.compo
 
 @Injectable()
 export class DashboardService {
+
   public widgets = signal<Widget[]>(
     [
       {
@@ -89,7 +90,7 @@ export class DashboardService {
     // this.addedWidgets.set(this.addedWidgets().map(w => w.id === id ? {...w, ...widget} : w));
   }
 
-  moveWidgetToRight(id: number) {
+  public moveWidgetToRight(id: number) {
     const index = this.addedWidgets().findIndex(w => w.id === id);
     if (index !== -1) {
       const newWidgets = [...this.addedWidgets()];
@@ -99,7 +100,7 @@ export class DashboardService {
     }
   }
 
-  moveWidgetToRightOld(id: number) {
+  public moveWidgetToRightOld(id: number) {
     const index = this.addedWidgets().findIndex(w => w.id === id);
     if (index === this.addedWidgets().length - 1) {
       return;
@@ -109,7 +110,7 @@ export class DashboardService {
     this.addedWidgets.set(newWidgets);
   }
 
-  moveWidgetToLeft(id: number) {
+  public moveWidgetToLeft(id: number) {
     const index = this.addedWidgets().findIndex(w => w.id === id);
     if (index !== -1) {
       const newWidgets = [...this.addedWidgets()];
@@ -119,7 +120,7 @@ export class DashboardService {
     }
   }
 
-  moveWidgetToLeftOld(id: number) {
+  public moveWidgetToLeftOld(id: number) {
     const index = this.addedWidgets().findIndex(w => w.id === id);
     if (index === 0) {
       return;
@@ -129,13 +130,45 @@ export class DashboardService {
     this.addedWidgets.set(newWidgets);
   }
 
-  deleteWidget(id: number) {
+  public deleteWidget(id: number) {
     this.addedWidgets.set(this.addedWidgets().filter(w => w.id !== id));
   }
 
-  saveWidgets = effect(() => {
+  public saveWidgets = effect(() => {
     const widgetsWithoutContent: Partial<Widget>[] = this.addedWidgets().map(w => ({...w}));
     widgetsWithoutContent.forEach(w => delete w.content);
     localStorage.setItem('widgets', JSON.stringify(widgetsWithoutContent));
   })
+
+
+  insertWidgetAtPosition(sourceWidgetId: number, destWidgetId: number) {
+    const widgetToAdd = this.widgetsToAdd().find((w) => w.id === sourceWidgetId);
+    if(!widgetToAdd) {
+      return;
+    }
+    const indexOfDestWidget = this.addedWidgets().findIndex((w) => w.id === destWidgetId);
+    const positionToAdd = indexOfDestWidget === -1 ? this.addedWidgets().length : indexOfDestWidget;
+
+    const newWidgets = [...this.addedWidgets()];
+    newWidgets.splice(positionToAdd, 0, widgetToAdd);
+    this.addedWidgets.set(newWidgets);
+  }
+  
+
+  updateWidgetPosition(sourceWidgetId: number, targetWidgetId: number) {
+    const sourceIndex = this.addedWidgets().findIndex((w) => w.id === sourceWidgetId);
+    if(sourceIndex === -1) {
+      return;
+    }
+    const newWidgets = [...this.addedWidgets()];
+    const sourceWidget = newWidgets.splice(sourceIndex, 1)[0];
+    const targetIndex = newWidgets.findIndex((w) => w.id === targetWidgetId);
+    if(targetIndex === -1) {
+      return;
+    }
+    const insertAt = targetIndex === sourceIndex ? targetIndex + 1 : targetIndex;
+
+    newWidgets.splice(insertAt, 0, sourceWidget);
+    this.addedWidgets.set(newWidgets);
+  }
 }
