@@ -24,7 +24,7 @@
     }
   </mat-menu>
 </div>
-<div #dashboard class="dashboard-widgets">
+<div class="dashboard-widgets">
   @for (widget of store.addedWidgets(); track widget.id) {
     <app-widget [data]="widget"></app-widget>
   }

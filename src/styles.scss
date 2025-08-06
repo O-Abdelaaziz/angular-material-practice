@@ -42,3 +42,44 @@ body {
 .m-0 {
   margin: 0 !important;
 }
+
+.row.mb-8 {
+  // align icon + number vertically
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.stat {
+  // large stat number
+  margin:0;
+  font-size: 1.75rem;
+  line-height: 1;
+  min-width: 50px;
+}
+
+.row.mb-8 mat-icon {
+  // slightly smaller icon
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.stat-subtext {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  margin: 0;
+  color: #ccc;
+}
+
+.stat-subtext p {
+  margin: 0;
+  font-weight: 600;
+  color: #d1495b;
+}
+
+.text-green {
+  color: #d1495b;
+}

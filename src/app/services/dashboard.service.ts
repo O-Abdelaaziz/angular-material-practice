@@ -1,4 +1,4 @@
-import {computed, Injectable, signal} from '@angular/core';
+import {computed, effect, Injectable, signal} from '@angular/core';
 import {Widget} from '../interface/dashboard';
 import {SubscribersComponent} from '../pages/dashboard/widgets/subscribers/subscribers.component';
 import {ViewsComponent} from '../pages/dashboard/widgets/views/views.component';
@@ -7,60 +7,68 @@ import {RevenueComponent} from '../pages/dashboard/widgets/revenue/revenue.compo
 
 @Injectable()
 export class DashboardService {
-
   public widgets = signal<Widget[]>(
     [
       {
         id: 1,
         label: 'Subscribers',
-        content: SubscribersComponent
+        content: SubscribersComponent,
+        rows: 1,
+        columns: 1,
+        backgroundColor: '#003f5c',
+        color: 'whitesmoke'
       },
       {
         id: 2,
         label: 'Views',
-        content: ViewsComponent
+        content: ViewsComponent,
+        rows: 1,
+        columns: 1,
+        backgroundColor: '#003f5c',
+        color: 'whitesmoke'
+      },
+      {
+        id: 3,
+        label: 'Watch time',
+        content: WatchTimeComponent,
+        rows: 1,
+        columns: 1,
+        backgroundColor: '#003f5c',
+        color: 'whitesmoke'
+      },
+      {
+        id: 4,
+        label: 'Revenue',
+        content: RevenueComponent,
+        rows: 1,
+        columns: 1,
+        backgroundColor: '#003f5c',
+        color: 'whitesmoke'
       }
     ]
   );
 
-  public addedWidgets = signal<Widget[]>([
-    {
-      id: 1,
-      label: 'Subscribers',
-      content: SubscribersComponent,
-      rows: 1,
-      columns: 1,
-      backgroundColor: '#003f5c',
-      color: 'whitesmoke'
-    },
-    {
-      id: 2,
-      label: 'Views',
-      content: ViewsComponent,
-      rows: 1,
-      columns: 1,
-      backgroundColor: '#003f5c',
-      color: 'whitesmoke'
-    },
-    {
-      id: 3,
-      label: 'Watch time',
-      content: WatchTimeComponent,
-      rows: 1,
-      columns: 1,
-      backgroundColor: '#003f5c',
-      color: 'whitesmoke'
-    },
-    {
-      id: 4,
-      label: 'Revenue',
-      content: RevenueComponent,
-      rows: 1,
-      columns: 1,
-      backgroundColor: '#003f5c',
-      color: 'whitesmoke'
+  constructor() {
+    this.fetchWidgets();
+  }
+
+  public fetchWidgets() {
+    const widgetsAsString = localStorage.getItem('widgets');
+    if (widgetsAsString) {
+      //this.widgets.set(JSON.parse(widgetsAsString));
+      const widgets = JSON.parse(widgetsAsString) as Widget[];
+      //this.widgets.set(widgets);
+      widgets.forEach(widget => {
+        const content = this.widgets().find(w => w.id === widget.id)?.content;
+        if (content) {
+          widget.content = content;
+        }
+      });
+      this.addedWidgets.set(widgets);
     }
-  ]);
+  }
+
+  public addedWidgets = signal<Widget[]>([]);
 
   public widgetsToAdd = computed(() => {
     const addedIds = this.addedWidgets().map(widget => widget.id);
@@ -124,4 +132,10 @@ export class DashboardService {
   deleteWidget(id: number) {
     this.addedWidgets.set(this.addedWidgets().filter(w => w.id !== id));
   }
+
+  saveWidgets = effect(() => {
+    const widgetsWithoutContent: Partial<Widget>[] = this.addedWidgets().map(w => ({...w}));
+    widgetsWithoutContent.forEach(w => delete w.content);
+    localStorage.setItem('widgets', JSON.stringify(widgetsWithoutContent));
+  })
 }
