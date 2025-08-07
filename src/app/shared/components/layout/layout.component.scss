@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+
+.mat-sidenav-container {
+  height: calc(100vh - 64px);
+  background: var(--mat-sys-surface-container);
+}
+
+.content {
+  padding: 24px;
+}
+
+mat-sidenav,
+mat-sidenav-content {
+  transition: all 500ms ease-in-out !important;
+}
+
+:host {
+  @include mat.sidenav-overrides((
+    container-shape:0px
+  ));
+}

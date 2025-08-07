@@ -7,6 +7,10 @@ import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {CdkDrag, CdkDragPlaceholder, CdkDropList, CdkDropListGroup} from '@angular/cdk/drag-drop';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 export const materialModules = [
   MatToolbarModule,
@@ -21,6 +25,10 @@ export const materialModules = [
   CdkDropList,
   CdkDrag,
   CdkDragPlaceholder,
+  MatCardModule,
+  MatFormFieldModule,
+  MatCheckboxModule,
+  MatInputModule
 ]
 
 @NgModule({

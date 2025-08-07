@@ -1,0 +1,67 @@
+:host * {
+  transition: all 250ms ease-in-out;
+}
+
+.content {
+  padding: 1.5rem;
+  background: var(--mat-sys-surface-container);
+}
+
+mat-sidenav-container {
+  height: calc(100dvh - 4rem);
+}
+
+.sidenav-header {
+  padding-top: 1.5rem;
+  text-align: center;
+  gap: 0.5rem;
+
+  > img {
+    border-radius: 100%;
+    object-fit: cover;
+  }
+}
+
+.header-text {
+  height: 3rem;
+
+  > h2 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  > p {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+}
+
+.hide-header-text {
+  // display: none;
+  opacity: 0;
+  height: 0px;
+}
+
+.menu-item {
+  border-left: 0.25rem solid;
+  border-left-color: transparent;
+}
+
+.selected-menu-item {
+  border-left-color: var(--mat-sys-primary);
+}
+
+mat-sidenav {
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
+
+mat-sidenav,
+mat-sidenav-content {
+  transition: all 250ms ease-in-out;
+}
+
+.indented {
+  --mat-list-list-item-leading-icon-start-space: 3rem;
+}

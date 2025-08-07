@@ -1,0 +1,26 @@
+<mat-toolbar color="primary mat-elevation-z3">
+  <button mat-icon-button (click)="toggleCollapsed()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <!--  <span>My App</span>-->
+  <span class="example-spacer"></span>
+  <button mat-icon-button>
+    <mat-icon>translate</mat-icon>
+  </button>
+  <button mat-icon-button (click)="toggleDarkMode()">
+    @if (isDarkMode()) {
+      <mat-icon>light_mode</mat-icon>
+    } @else {
+      <mat-icon>dark_mode</mat-icon>
+    }
+  </button>
+  <button mat-icon-button>
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>share</mat-icon>
+  </button>
+
+  <app-dropdown-userprofile></app-dropdown-userprofile>
+
+</mat-toolbar>

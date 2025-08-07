@@ -1,0 +1,46 @@
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+    <div class="sidenav-header">
+      <img src="./avatar.png" [style.width]="profilePicSize()" alt="Photo">
+      <div class="header-text" [class.hide-header-text]="isCollapsed()">
+        <h2>Marioland</h2>
+        <p>Super Mario</p>
+      </div>
+    </div>
+    <mat-nav-list>
+      @for (item of menuItems(); track item.label; let i = $index) {
+        <a mat-list-item class="menu-item" (click)="toggleNested(i)" [routerLink]="item.route" routerLinkActive="selected-menu-item" #rla="routerLinkActive" [activated]="rla.isActive">
+          <mat-icon [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'" matListItemIcon>{{ item.icon }}</mat-icon>
+          @if (!isCollapsed()) {
+            <span matListItemTitle>{{ item.label }}</span>
+          }
+          @if (item.subItems) {
+            <span matListItemMeta>
+                        @if (isNestedMenuOpen(i)) {
+                          <mat-icon>expand_less</mat-icon>
+                        } @else {
+                          <mat-icon>expand_more</mat-icon>
+                        }
+                    </span>
+          }
+        </a>
+
+        @if (item.subItems && isNestedMenuOpen(i)) {
+          <div @expandContractMenu>
+            @for (subItem of item.subItems; track subItem.label) {
+              <a mat-list-item class="menu-item" [class.indented]="!isCollapsed()" [routerLink]="item.route + '/' + subItem.route" routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive">
+                <mat-icon [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'" matListItemIcon>{{ subItem.icon }}</mat-icon>
+                @if (!isCollapsed()) {
+                  <span>{{ subItem.label }}</span>
+                }
+              </a>
+            }
+          </div>
+        }
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,43 @@
+@if (appStore.user(); as user) {
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <img [src]="user.image" alt="avatar" class="avatar">
+  </button>
+
+  <mat-menu  #menu="matMenu" class="rounded-4 dropdown-userprofile">
+    <button mat-menu-item class="d-flex align-items-center justify-content-center text-center py-2">
+      <div class="image-box">
+        <img [src]="user.image" alt="avatar" width="80" height="80" class="rounded-circle" alt="">
+      </div>
+      <div>
+        <h4 class="username mb-0">Hi, {{ user.name }}!</h4>
+        <p class="mb-0 role">{{ user.role }}</p>
+      </div>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>
+      <mat-icon class="material-icons-outlined">account_circle</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon class="material-icons-outlined">settings</mat-icon>
+      <span>Setting</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon class="material-icons-outlined">dashboard</mat-icon>
+      <span>Dashboard</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon class="material-icons-outlined">account_balance</mat-icon>
+      <span>Balance</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon class="material-icons-outlined">file_download</mat-icon>
+      <span>Downloads</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon class="material-icons-outlined">logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+}

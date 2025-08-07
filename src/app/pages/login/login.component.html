@@ -1,0 +1,58 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <h2 class="title">Welcome Back</h2>
+    <p class="subtitle">Please sign in to your account</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email"/>
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="loginForm.controls['email'].errors">Please enter a valid email address</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" [type]="togglePasswordVisibility() ? 'password' :'text'"/>
+        <!-- Toggle password visibility -->
+        <button mat-icon-button matSuffix (click)="togglePasswordVisibility.set(!togglePasswordVisibility())"
+                type="button">
+          <mat-icon>{{togglePasswordVisibility() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-error *ngIf="loginForm.controls['password'].errors">Please enter a valid password</mat-error>
+      </mat-form-field>
+
+      <div class="options-row">
+        <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
+        <a class="forgot-link" href="#">Forgot password?</a>
+      </div>
+
+      <button mat-raised-button color="primary" class="full-width login-btn">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+    </form>
+
+    <div class="separator">
+      <span>or login with</span>
+    </div>
+
+    <div class="social-buttons">
+      <button mat-stroked-button class="social-btn google">
+        <!--        <mat-icon>g_mobiledata</mat-icon>-->
+        Google
+      </button>
+      <button mat-stroked-button class="social-btn facebook">
+        <!--        <mat-icon>facebook</mat-icon>-->
+        Facebook
+      </button>
+    </div>
+
+    <p class="signup-prompt">
+      Don't have an account?
+      <a href="#">Sign up</a>
+    </p>
+  </mat-card>
+</div>
+

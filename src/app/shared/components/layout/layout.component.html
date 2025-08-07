@@ -1,0 +1,17 @@
+<app-header [(collapsed)]="collapsed"   ></app-header>
+<!--<app-sidebar></app-sidebar>-->
+<!-- Represents the whole page under the toolbar-->
+<mat-sidenav-container class="container">
+
+  <!-- Side navigation -->
+  <!--  mode="over" [opened]="!isCollapsed"-->
+  <mat-sidenav mode="side" opened [style.width]="sidenavWidth()">
+    <app-custom-sidenav [collapsed]="collapsed()"></app-custom-sidenav>
+  </mat-sidenav>
+
+  <!-- Main content -->
+  <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

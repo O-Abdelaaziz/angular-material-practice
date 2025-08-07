@@ -1,0 +1,37 @@
+.avatar {
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--mat-sys-on-surface);
+}
+
+.role {
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  //width: fit-content;
+  //margin: 0 auto;
+}
+
+.image-box {
+  max-width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 5px;
+  border: 1px solid var(--mat-sys-on-surface);
+}
+
+.rounded-circle {
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-box .rounded-circle:hover {
+  transform: scale(1.2);
+}
