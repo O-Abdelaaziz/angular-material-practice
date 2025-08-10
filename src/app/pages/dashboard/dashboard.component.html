@@ -6,7 +6,7 @@
       (click)="toggleWidgetsPanel()">
       @if (widgetsOpen()) {
         <mat-icon>close</mat-icon>
-      }@else {
+      } @else {
         <mat-icon>add</mat-icon>
       } Widgets
 
@@ -29,12 +29,15 @@
     <!--    }-->
     <!--  </mat-menu>-->
   </div>
-  <div #dashboard class="dashboard-widgets" >
+  <div #dashboard class="dashboard-widgets">
     @for (widget of store.addedWidgets(); track widget.id) {
       <app-widget cdkDropList
                   [data]="widget"
                   (cdkDropListDropped)="drop($event)"
-                  [cdkDropListData]="widget.id"></app-widget>
+                  [cdkDropListData]="widget.id"
+                  [style.view-transition-name]="'widget-' + widget.id"
+                  class="[view-transition-class:widget]"
+      ></app-widget>
     }
     <div cdkDropList (cdkDropListDropped)="drop($event)"></div>
   </div>

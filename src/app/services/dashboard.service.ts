@@ -77,16 +77,21 @@ export class DashboardService {
   })
 
   public addWidget(widget: Widget) {
-    this.addedWidgets.set([...this.addedWidgets(), {...widget}])
+    document.startViewTransition(() => {
+      this.addedWidgets.set([...this.addedWidgets(), {...widget}])
+    })
   }
 
   public updateWidget(id: number, widget: Partial<Widget>) {
     const index = this.addedWidgets().findIndex(w => w.id === id);
-    if (index !== -1) {
-      const newWidgets = [...this.addedWidgets()];
-      newWidgets[index] = {...newWidgets[index], ...widget};
-      this.addedWidgets.set(newWidgets);
-    }
+    document.startViewTransition(() => {
+      if (index !== -1) {
+        const newWidgets = [...this.addedWidgets()];
+        newWidgets[index] = {...newWidgets[index], ...widget};
+        this.addedWidgets.set(newWidgets);
+      }
+    })
+
     // this.addedWidgets.set(this.addedWidgets().map(w => w.id === id ? {...w, ...widget} : w));
   }
 
@@ -131,7 +136,9 @@ export class DashboardService {
   }
 
   public deleteWidget(id: number) {
-    this.addedWidgets.set(this.addedWidgets().filter(w => w.id !== id));
+    document.startViewTransition(() => {
+      this.addedWidgets.set(this.addedWidgets().filter(w => w.id !== id));
+    })
   }
 
   public saveWidgets = effect(() => {
@@ -140,10 +147,9 @@ export class DashboardService {
     localStorage.setItem('widgets', JSON.stringify(widgetsWithoutContent));
   })
 
-
   insertWidgetAtPosition(sourceWidgetId: number, destWidgetId: number) {
     const widgetToAdd = this.widgetsToAdd().find((w) => w.id === sourceWidgetId);
-    if(!widgetToAdd) {
+    if (!widgetToAdd) {
       return;
     }
     const indexOfDestWidget = this.addedWidgets().findIndex((w) => w.id === destWidgetId);
@@ -151,24 +157,27 @@ export class DashboardService {
 
     const newWidgets = [...this.addedWidgets()];
     newWidgets.splice(positionToAdd, 0, widgetToAdd);
-    this.addedWidgets.set(newWidgets);
+    document.startViewTransition(() => {
+      this.addedWidgets.set(newWidgets);
+    })
   }
-
 
   updateWidgetPosition(sourceWidgetId: number, targetWidgetId: number) {
     const sourceIndex = this.addedWidgets().findIndex((w) => w.id === sourceWidgetId);
-    if(sourceIndex === -1) {
+    if (sourceIndex === -1) {
       return;
     }
     const newWidgets = [...this.addedWidgets()];
     const sourceWidget = newWidgets.splice(sourceIndex, 1)[0];
     const targetIndex = newWidgets.findIndex((w) => w.id === targetWidgetId);
-    if(targetIndex === -1) {
+    if (targetIndex === -1) {
       return;
     }
     const insertAt = targetIndex === sourceIndex ? targetIndex + 1 : targetIndex;
 
     newWidgets.splice(insertAt, 0, sourceWidget);
-    this.addedWidgets.set(newWidgets);
+    document.startViewTransition(() => {
+      this.addedWidgets.set(newWidgets);
+    });
   }
 }

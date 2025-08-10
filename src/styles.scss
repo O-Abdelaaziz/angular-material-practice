@@ -270,3 +270,8 @@ mb-0 {
 @include mat.progress-spinner-overrides((
   active-indicator-color: orange,
 ));
+
+::view-transition-old(.widget),
+::view-transition-new(.widget) {
+  height: 100%;
+}

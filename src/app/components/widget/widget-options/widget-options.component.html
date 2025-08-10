@@ -1,11 +1,20 @@
-<button mat-icon-button (click)="store.deleteWidget(data().id)" class="delete-button">
+<button
+  mat-icon-button
+  (click)="store.deleteWidget(data().id)"
+  class="delete-button"
+  [style.view-transition]="'widget-delete-' + data().id">
   <mat-icon>delete</mat-icon>
 </button>
 
-<button mat-icon-button (click)="closeOptions()" class="close-button">
+<button
+  mat-icon-button
+  (click)="closeOptions()"
+  class="close-button"
+  [style.view-transition]="'widget-close-' + data().id">
   <mat-icon>close</mat-icon>
 </button>
-<div>
+
+<div [style.view-transition]="'widget-width-' + data().id">
   <p style="color : var(--mat-sys-on-surface);">Width:</p>
   <mat-button-toggle-group
     hideSingleSelectionIndicator
@@ -19,7 +28,7 @@
   </mat-button-toggle-group>
 </div>
 
-<div>
+<div [style.view-transition]="'widget-height-' + data().id">
   <p style="color : var(--mat-sys-on-surface);">Height:</p>
   <mat-button-toggle-group
     hideSingleSelectionIndicator
@@ -32,9 +41,17 @@
   </mat-button-toggle-group>
 </div>
 
-<button mat-icon-button class="move-forward-button" (click)="store.moveWidgetToRight(data().id)">
+<button
+  mat-icon-button class="move-forward-button"
+  (click)="store.moveWidgetToRight(data().id)"
+  [style.view-transition]="'widget-move-forward-' + data().id">
   <mat-icon>chevron_right</mat-icon>
 </button>
-<button mat-icon-button class="move-backward-button" (click)="store.moveWidgetToLeft(data().id)">
+
+<button
+  mat-icon-button
+  class="move-backward-button"
+  (click)="store.moveWidgetToLeft(data().id)"
+  [style.view-transition]="'widget-move-backward-' + data().id">
   <mat-icon>chevron_left</mat-icon>
 </button>
