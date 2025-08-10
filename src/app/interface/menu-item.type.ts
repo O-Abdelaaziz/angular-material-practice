@@ -1,6 +1,7 @@
 import {Type} from '@angular/core';
 import {PageComponent} from '../pages/page/page.component';
 import {DashboardComponent} from '../pages/dashboard/dashboard.component';
+import {FormsComponent} from '../pages/forms/forms.component';
 
 export type MenuItem = {
   icon: string,
@@ -98,6 +99,13 @@ export const menuItems: MenuItem[] = [
     route: 'comments',
     extraInfo: false,
     component: PageComponent,
+  },
+  {
+    icon: 'library_books',
+    label: 'forms',
+    route: 'forms',
+    extraInfo: false,
+    component: FormsComponent,
   },
   {
     icon: 'settings',

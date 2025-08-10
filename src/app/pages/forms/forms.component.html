@@ -1,0 +1,196 @@
+<h2 class="form-title">Forms</h2>
+<div class="form-description">
+  <p class="form-text">
+    This section demonstrates clean, responsive form layouts using Angular
+    Material components styled with pure CSS. The form below showcases
+    proper spacing, alignment, and organization of form fields with a modern
+    design that follows Material Design principles.
+
+    <br /><br />
+
+    The errors are handled with a custom directive appFieldError that
+    automatically detects the validations applied to the form fields and
+    adds the error to the mat-error element.
+  </p>
+</div>
+
+<form [formGroup]="userForm" class="form-wrapper" (ngSubmit)="onSubmit()">
+  <div class="form-section">
+    <h3 class="section-title">Personal Information</h3>
+    <p class="section-subtitle">
+      Please fill in the following information to create your account.
+    </p>
+
+    <div class="form-grid three-columns">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Middle Name</mat-label>
+        <input matInput formControlName="middleName" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" />
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-grid two-columns">
+      <mat-form-field>
+        <mat-label>Date of Birth</mat-label>
+        <input
+          matInput
+          [matDatepicker]="dobPicker"
+          formControlName="dateOfBirth"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="dobPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #dobPicker></mat-datepicker>
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-grid two-columns">
+      <mat-form-field>
+        <mat-label>Contact Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Phone Number</mat-label>
+        <input
+          matInput
+          formControlName="phoneNumber"
+          type="tel"
+          [maxLength]="10"
+        />
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-grid one-column">
+      <mat-form-field>
+        <mat-label>Preferred Language</mat-label>
+        <mat-select formControlName="language">
+          <mat-option value="english">English</mat-option>
+          <mat-option value="spanish">Spanish</mat-option>
+          <mat-option value="french">French</mat-option>
+          <mat-option value="german">German</mat-option>
+          <mat-option value="chinese">Chinese</mat-option>
+          <mat-option value="japanese">Japanese</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3 class="section-title">Address & Location</h3>
+    <p class="section-subtitle">
+      Please specify your address and location.
+    </p>
+
+    <div class="form-grid one-column">
+      <mat-form-field>
+        <mat-label>Street Address</mat-label>
+        <input matInput formControlName="streetAddress" />
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-grid one-column">
+      <mat-form-field>
+        <mat-label>Apartment/Unit Number</mat-label>
+        <input matInput formControlName="apartmentUnit" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-grid three-columns">
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city" />
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>State/Province</mat-label>
+        <input matInput formControlName="stateProvince" />
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Postal/ZIP Code</mat-label>
+        <input matInput formControlName="postalCode" maxlength="5" />
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-grid one-column">
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country">
+          <mat-option value="us">United States</mat-option>
+          <mat-option value="ca">Canada</mat-option>
+          <mat-option value="uk">United Kingdom</mat-option>
+          <mat-option value="au">Australia</mat-option>
+          <mat-option value="de">Germany</mat-option>
+          <mat-option value="fr">France</mat-option>
+          <mat-option value="jp">Japan</mat-option>
+        </mat-select>
+        <mat-error appFieldError></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-grid two-columns">
+      <mat-form-field>
+        <mat-label>Time Zone</mat-label>
+        <mat-select formControlName="timeZone">
+          <mat-option value="utc-8">Pacific Time (UTC-8)</mat-option>
+          <mat-option value="utc-7">Mountain Time (UTC-7)</mat-option>
+          <mat-option value="utc-6">Central Time (UTC-6)</mat-option>
+          <mat-option value="utc-5">Eastern Time (UTC-5)</mat-option>
+          <mat-option value="utc-0">Greenwich Mean Time (UTC+0)</mat-option>
+          <mat-option value="utc+1"
+          >Central European Time (UTC+1)</mat-option
+          >
+          <mat-option value="utc+8">China Standard Time (UTC+8)</mat-option>
+          <mat-option value="utc+9">Japan Standard Time (UTC+9)</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Preferred Currency</mat-label>
+        <mat-select formControlName="currency">
+          <mat-option value="usd">US Dollar (USD)</mat-option>
+          <mat-option value="eur">Euro (EUR)</mat-option>
+          <mat-option value="gbp">British Pound (GBP)</mat-option>
+          <mat-option value="cad">Canadian Dollar (CAD)</mat-option>
+          <mat-option value="aud">Australian Dollar (AUD)</mat-option>
+          <mat-option value="jpy">Japanese Yen (JPY)</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button mat-button type="button">Cancel</button>
+    <button mat-flat-button type="submit">Save</button>
+  </div>
+</form>

@@ -37,6 +37,10 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadComponent: () => import('./pages/dashboard/dashboard.component').then(d => d.DashboardComponent)
+      },
+      {
+        path: 'forms',
+        loadComponent: () => import('./pages/forms/forms.component').then(f => f.FormsComponent)
       }
     ]
   }
