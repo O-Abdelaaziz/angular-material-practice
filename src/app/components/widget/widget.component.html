@@ -4,18 +4,23 @@
      [style.color]="data().color ?? 'inherit'"
      cdkDragPreviewContainer="parent"
      cdkDrag>
-  <h3 class="m-0"> {{ data().label }}</h3>
-  <button mat-icon-button class="settings"
-          (click)="showOptions.set(!showOptions())"
-          [style.--mdc-icon-button-icon-color]="data().color ?? 'inherit'"
-  >
-    <mat-icon>settings</mat-icon>
-  </button>
-  <ng-container [ngComponentOutlet]="data().content"/>
 
-  @if (showOptions()) {
-    <app-widget-options [(showOptions)]="showOptions" [data]="data()"></app-widget-options>
+  @if (loading()) {
+    <mat-spinner diameter="50" mode="indeterminate" class="loading-spinner"></mat-spinner>
+  } @else {
+    <h3 class="m-0"> {{ data().label }}</h3>
+    <button mat-icon-button class="settings"
+            (click)="showOptions.set(!showOptions())"
+            [style.--mdc-icon-button-icon-color]="data().color ?? 'inherit'"
+    >
+      <mat-icon>settings</mat-icon>
+    </button>
+    <ng-container [ngComponentOutlet]="data().content"/>
+
+    @if (showOptions()) {
+      <app-widget-options [(showOptions)]="showOptions" [data]="data()"></app-widget-options>
+    }
+
+    <div *cdkDragPlaceholder></div>
   }
-
-  <div *cdkDragPlaceholder></div>
 </div>

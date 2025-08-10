@@ -12,6 +12,7 @@ import {AppStore} from '../../app.store';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  isLoading = signal(false);
   loginForm: FormGroup;
   togglePasswordVisibility = signal(true);
   appStore = inject(AppStore);
@@ -25,9 +26,17 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
+    this.isLoading.set(true);
+    setTimeout(() =>
+        this.login()
+      , 5000);
+
+  }
+  login() {
     if (this.loginForm.valid) {
       console.log('Login data:', this.loginForm.value);
       this.appStore.login();
+      this.isLoading.set(false);
     }
   }
 }

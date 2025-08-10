@@ -1,6 +1,9 @@
-<app-header [(collapsed)]="collapsed"   ></app-header>
+<app-header [(collapsed)]="collapsed"></app-header>
 <!--<app-sidebar></app-sidebar>-->
 <!-- Represents the whole page under the toolbar-->
+@if (appStore.loading()) {
+  <app-progress-bar></app-progress-bar>
+}
 <mat-sidenav-container class="container">
 
   <!-- Side navigation -->

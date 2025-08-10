@@ -158,6 +158,20 @@
   font-weight: 500;
 }
 
+.spinner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 8px;
+}
+
 
 /* Responsive tweaks */
 @media (max-width: 480px) {
@@ -192,3 +206,158 @@
   //  margin-top: 0.5rem;
   //}
 }
+
+
+/* Container */
+//.login-container {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  min-height: 100vh;
+//  background: linear-gradient(to right, #e0eafc, #cfdef3);
+//  padding: 2rem;
+//}
+//
+///* Card */
+//.login-card {
+//  width: 100%;
+//  max-width: 420px;
+//  border-radius: 16px;
+//  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+//  overflow: hidden;
+//}
+//
+///* Header */
+//mat-card-header {
+//  padding: 1.5rem 1.5rem 0 1.5rem;
+//}
+//
+//mat-card-title {
+//  font-size: 1.8rem;
+//  font-weight: 600;
+//  color: #333F98;
+//}
+//
+//mat-card-subtitle {
+//  font-size: 0.95rem;
+//  color: #666;
+//  margin-top: 0.25rem;
+//}
+//
+///* Image */
+//mat-card-image {
+//  max-height: 160px;
+//  object-fit: cover;
+//  width: 100%;
+//  border-radius: 0;
+//}
+//
+///* Content */
+//mat-card-content {
+//  padding: 1.5rem;
+//}
+//
+//.full-width {
+//  width: 100%;
+//  margin-bottom: 1rem;
+//}
+//
+//.options-row {
+//  display: flex;
+//  justify-content: space-between;
+//  align-items: center;
+//  margin-bottom: 1rem;
+//}
+//
+//.forgot-link {
+//  font-size: 0.85rem;
+//  color: #3f51b5;
+//  text-decoration: none;
+//}
+//
+//.forgot-link:hover {
+//  text-decoration: underline;
+//}
+//
+///* Actions */
+//mat-card-actions {
+//  padding: 1.5rem;
+//  display: flex;
+//  flex-direction: column;
+//  gap: 1rem;
+//}
+//
+//.login-btn {
+//  font-weight: 600;
+//  padding: 0.75rem;
+//}
+//
+//.separator {
+//  text-align: center;
+//  font-size: 0.85rem;
+//  color: #999;
+//  position: relative;
+//}
+//
+//.separator::before,
+//.separator::after {
+//  content: "";
+//  position: absolute;
+//  top: 50%;
+//  width: 40%;
+//  height: 1px;
+//  background-color: #ccc;
+//}
+//
+//.separator::before {
+//  left: 0;
+//}
+//
+//.separator::after {
+//  right: 0;
+//}
+//
+///* Social Buttons */
+//.social-buttons {
+//  display: flex;
+//  justify-content: space-between;
+//  gap: 0.5rem;
+//}
+//
+//.social-btn {
+//  flex: 1;
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  gap: 0.5rem;
+//  font-weight: 500;
+//}
+//
+//.google {
+//  border-color: #db4437;
+//  color: #db4437;
+//}
+//
+//.facebook {
+//  border-color: #3b5998;
+//  color: #3b5998;
+//}
+//
+///* Footer */
+//mat-card-footer {
+//  padding: 1rem 1.5rem;
+//  background-color: #f5f5f5;
+//  text-align: center;
+//  font-size: 0.9rem;
+//  color: #555;
+//}
+//
+//.signup-prompt a {
+//  color: #3f51b5;
+//  text-decoration: none;
+//  font-weight: 500;
+//}
+//
+//.signup-prompt a:hover {
+//  text-decoration: underline;
+//}

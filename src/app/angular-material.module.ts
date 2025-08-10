@@ -11,6 +11,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 export const materialModules = [
   MatToolbarModule,
@@ -28,7 +30,9 @@ export const materialModules = [
   MatCardModule,
   MatFormFieldModule,
   MatCheckboxModule,
-  MatInputModule
+  MatInputModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule
 ]
 
 @NgModule({

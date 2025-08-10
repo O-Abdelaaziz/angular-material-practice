@@ -1,5 +1,12 @@
 <div class="login-container">
   <mat-card class="login-card">
+    <div  *ngIf="isLoading()" class="spinner-overlay">
+      <mat-progress-spinner
+        mode="indeterminate"
+        diameter="50"
+      ></mat-progress-spinner>
+    </div>
+
     <h2 class="title">Welcome Back</h2>
     <p class="subtitle">Please sign in to your account</p>
 
@@ -17,7 +24,7 @@
         <!-- Toggle password visibility -->
         <button mat-icon-button matSuffix (click)="togglePasswordVisibility.set(!togglePasswordVisibility())"
                 type="button">
-          <mat-icon>{{togglePasswordVisibility() ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-icon>{{ togglePasswordVisibility() ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
         <mat-icon matSuffix>lock</mat-icon>
         <mat-error *ngIf="loginForm.controls['password'].errors">Please enter a valid password</mat-error>
@@ -53,6 +60,116 @@
       Don't have an account?
       <a href="#">Sign up</a>
     </p>
+
   </mat-card>
 </div>
 
+
+
+
+
+
+
+
+<!--<div class="login-container">-->
+<!--  <mat-card class="login-card">-->
+<!--    &lt;!&ndash; Header &ndash;&gt;-->
+<!--    <mat-card-header>-->
+<!--      <mat-card-title class="title">Welcome Back</mat-card-title>-->
+<!--      <mat-card-subtitle class="subtitle">Please sign in to your account</mat-card-subtitle>-->
+<!--    </mat-card-header>-->
+
+    <!-- Image (optional) -->
+<!--    <img mat-card-image src="./login-banner.svg" alt="Login banner" />-->
+<!--    <svg width="100%" height="160" viewBox="0 0 420 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">-->
+<!--      <defs>-->
+<!--        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">-->
+<!--          <stop offset="0%" style="stop-color:#333F98; stop-opacity:1" />-->
+<!--          <stop offset="100%" style="stop-color:#6DD5FA; stop-opacity:1" />-->
+<!--        </linearGradient>-->
+<!--      </defs>-->
+<!--      <path d="M0,0 L420,0 L420,120 Q210,160 0,120 Z" fill="url(#grad)" />-->
+<!--      <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-size="24" fill="white" font-family="Arial, sans-serif">-->
+<!--        Login Portal-->
+<!--      </text>-->
+<!--    </svg>-->
+
+<!--    <svg width="100%" height="160" viewBox="0 0 420 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">-->
+<!--      <defs>-->
+<!--        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">-->
+<!--          <stop offset="0%" style="stop-color:#333F98; stop-opacity:1" />-->
+<!--          <stop offset="100%" style="stop-color:#6DD5FA; stop-opacity:1" />-->
+<!--        </linearGradient>-->
+<!--      </defs>-->
+<!--      <path d="M0,0 L420,0 L420,120 Q210,160 0,120 Z" fill="url(#grad1)" />-->
+<!--      <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-size="24" fill="white" font-family="Roboto, sans-serif">-->
+<!--        Login-->
+<!--      </text>-->
+<!--    </svg>-->
+
+<!--    <svg width="100%" height="160" viewBox="0 0 420 160" xmlns="http://www.w3.org/2000/svg">-->
+<!--      <defs>-->
+<!--        <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">-->
+<!--          <stop offset="0%" style="stop-color:#333F98; stop-opacity:1" />-->
+<!--          <stop offset="100%" style="stop-color:#333F98; stop-opacity:1" />-->
+<!--        </linearGradient>-->
+<!--      </defs>-->
+<!--      <polygon points="0,0 420,0 420,420 0,420" fill="url(#grad4)" />-->
+<!--      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="24" fill="white" font-family="Roboto, sans-serif">-->
+<!--        Login-->
+<!--      </text>-->
+<!--    </svg>-->
+
+
+
+
+
+    <!-- Main Content -->
+<!--    <mat-card-content>-->
+<!--      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">-->
+<!--        <mat-form-field appearance="outline" class="full-width">-->
+<!--          <mat-label>Email</mat-label>-->
+<!--          <input matInput formControlName="email" type="email" />-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field appearance="outline" class="full-width">-->
+<!--          <mat-label>Password</mat-label>-->
+<!--          <input matInput formControlName="password" type="password" />-->
+<!--        </mat-form-field>-->
+
+<!--        <div class="options-row">-->
+<!--          <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>-->
+<!--          <a class="forgot-link" href="#">Forgot password?</a>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </mat-card-content>-->
+
+<!--    &lt;!&ndash; Actions &ndash;&gt;-->
+<!--    <mat-card-actions>-->
+<!--      <button mat-raised-button color="primary" class="full-width login-btn">-->
+<!--        Login-->
+<!--      </button>-->
+
+<!--      <div class="separator">-->
+<!--        <span>or login with</span>-->
+<!--      </div>-->
+
+<!--      <div class="social-buttons">-->
+<!--        <button mat-stroked-button class="social-btn google">-->
+<!--          <mat-icon svgIcon="google"></mat-icon> Google-->
+<!--        </button>-->
+<!--        <button mat-stroked-button class="social-btn facebook">-->
+<!--          <mat-icon svgIcon="facebook"></mat-icon> Facebook-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </mat-card-actions>-->
+
+<!--    &lt;!&ndash; Footer &ndash;&gt;-->
+<!--    <mat-card-footer>-->
+<!--      <p class="signup-prompt">-->
+<!--        Don't have an account?-->
+<!--        <a href="#">Sign up</a>-->
+<!--      </p>-->
+<!--    </mat-card-footer>-->
+<!--  </mat-card>-->
+<!--</div>-->

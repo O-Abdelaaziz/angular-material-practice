@@ -265,3 +265,8 @@ html {
 mb-0 {
   margin-bottom: 0 !important;
 }
+
+
+@include mat.progress-spinner-overrides((
+  active-indicator-color: orange,
+));

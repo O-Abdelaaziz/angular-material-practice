@@ -1,4 +1,4 @@
-import {Component, input, signal} from '@angular/core';
+import {Component, input, OnInit, signal} from '@angular/core';
 import {Widget} from '../../interface/dashboard';
 import {NgComponentOutlet} from '@angular/common';
 import {AngularMaterialModule} from '../../angular-material.module';
@@ -14,7 +14,15 @@ import {WidgetOptionsComponent} from './widget-options/widget-options.component'
     '[style.grid-area]': '"span " + (data().rows ?? 1) + " / span " + (data().columns ?? 1)'
   }
 })
-export class WidgetComponent {
+export class WidgetComponent implements OnInit {
   public data = input.required<Widget>();
   public showOptions = signal(false);
+  public loading = signal(false);
+
+  ngOnInit(): void {
+    this.loading.set(true);
+    setTimeout(() => {
+      this.loading.set(false);
+    }, 5000);
+  }
 }
