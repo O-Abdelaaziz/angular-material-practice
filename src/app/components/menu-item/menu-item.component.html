@@ -1,3 +1,4 @@
+<ng-container *transloco="let t">
 <a mat-list-item
    class="menu-item"
    [routerLink]="routeHistory() + '/' + item().route"
@@ -6,12 +7,14 @@
    #rla="routerLinkActive"
    [routerLinkActiveOptions]="{exact: true}"
    [activated]="rla.isActive"
-    [style.--mat-list-list-item-leading-icon-start-space]="indentation()">
+   [style.--mat-list-list-item-leading-icon-start-space]="indentation()"
+  >
+<!--   [class.rtl]="i18n.direction() === 'rtl'"-->
   <mat-icon
     [fontSet]="rla.isActive ?'material-icons': 'material-icons-outlined'"
     matListItemIcon>{{ item().icon }}
   </mat-icon>
-  <span matListItemTitle *ngIf="!collapsed()">{{ item().label }}</span>
+  <span matListItemTitle class="menu-item-label" *ngIf="!collapsed()">{{ t('sidebar.' + item().label)  || item().label}}</span>
 
   <span matListItemMeta>
     @if (item().subItems) {
@@ -35,10 +38,11 @@
 @if (item().subItems && nestedMenuOpen()) {
   <div @expandContractMenu>
     @for (subItem of item().subItems; track subItem.label) {
-      <app-menu-item [item]="subItem" [collapsed]="collapsed()" [routeHistory]="routeHistory() + '/' + item().route"></app-menu-item>
+      <app-menu-item [item]="subItem" [collapsed]="collapsed()"
+                     [routeHistory]="routeHistory() + '/' + item().route"></app-menu-item>
     }
   </div>
 }
-
+</ng-container>
 
 

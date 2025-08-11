@@ -1,0 +1,12 @@
+{
+  "language": {
+    "english": "إنجليزية",
+    "french": "فرنسية",
+    "arabic": "العربية"
+  },
+  "title": "مرحبا",
+  "sidebar": {
+    "home": "الرئيسية",
+    "settings": "الإعدادات"
+  }
+}

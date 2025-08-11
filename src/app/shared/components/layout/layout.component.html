@@ -4,7 +4,7 @@
 @if (appStore.loading()) {
   <app-progress-bar></app-progress-bar>
 }
-<mat-sidenav-container class="container">
+<mat-sidenav-container class="container" [dir]="i18n.direction()">
 
   <!-- Side navigation -->
   <!--  mode="over" [opened]="!isCollapsed"-->
@@ -13,7 +13,15 @@
   </mat-sidenav>
 
   <!-- Main content -->
-  <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+  <!--  <mat-sidenav-content-->
+  <!--    class="content" [style.margin-left]="i18n.currentLang() === 'ar' ? '0' : sidenavWidth()"-->
+  <!--    [style.margin-right]="i18n.currentLang() === 'ar' ? sidenavWidth() : '0'">  -->
+
+  <mat-sidenav-content
+    class="content"
+    [style.margin-left]="marginLeft()"
+    [style.margin-right]="marginRight()">
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 

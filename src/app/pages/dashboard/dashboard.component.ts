@@ -6,11 +6,12 @@ import {Widget} from '../../interface/dashboard';
 import {wrapGrid} from 'animate-css-grid';
 import {CdkDragDrop} from '@angular/cdk/drag-drop';
 import {WidgetsPanelComponent} from './widgets-panel/widgets-panel.component';
+import {TranslocoPipe} from '@jsverse/transloco';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [WidgetComponent, AngularMaterialModule, WidgetsPanelComponent],
+  imports: [WidgetComponent, AngularMaterialModule, WidgetsPanelComponent, TranslocoPipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   providers: [DashboardService]

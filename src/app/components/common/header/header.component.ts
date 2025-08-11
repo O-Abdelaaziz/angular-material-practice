@@ -3,11 +3,12 @@ import {AngularMaterialModule} from '../../../angular-material.module';
 import {SidenavService} from '../../../services/sidenav.service';
 import {AppStore} from '../../../app.store';
 import {DropdownUserprofileComponent} from './dropdown-userprofile/dropdown-userprofile.component';
+import {DropdownLangComponent} from './dropdown-lang/dropdown-lang.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [AngularMaterialModule, DropdownUserprofileComponent],
+  imports: [AngularMaterialModule, DropdownUserprofileComponent, DropdownLangComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

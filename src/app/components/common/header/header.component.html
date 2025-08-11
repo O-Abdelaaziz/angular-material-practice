@@ -4,9 +4,7 @@
   </button>
   <!--  <span>My App</span>-->
   <span class="example-spacer"></span>
-  <button mat-icon-button>
-    <mat-icon>translate</mat-icon>
-  </button>
+  <app-dropdown-lang></app-dropdown-lang>
   <button mat-icon-button (click)="toggleDarkMode()">
     @if (isDarkMode()) {
       <mat-icon>light_mode</mat-icon>
@@ -14,12 +12,12 @@
       <mat-icon>dark_mode</mat-icon>
     }
   </button>
-  <button mat-icon-button>
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon>share</mat-icon>
-  </button>
+<!--  <button mat-icon-button>-->
+<!--    <mat-icon>favorite</mat-icon>-->
+<!--  </button>-->
+<!--  <button mat-icon-button>-->
+<!--    <mat-icon>share</mat-icon>-->
+<!--  </button>-->
 
   <app-dropdown-userprofile></app-dropdown-userprofile>
 

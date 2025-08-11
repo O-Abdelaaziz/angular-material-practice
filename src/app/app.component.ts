@@ -18,5 +18,14 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon(
       'google', this.domSanitizer.bypassSecurityTrustResourceUrl('./google-svg.svg'),
     );
+    this.matIconRegistry.addSvgIcon(
+      'arabic', this.domSanitizer.bypassSecurityTrustResourceUrl('./arabic.svg'),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'english', this.domSanitizer.bypassSecurityTrustResourceUrl('./english.svg'),
+    );
+    this.matIconRegistry.addSvgIcon(
+      'french', this.domSanitizer.bypassSecurityTrustResourceUrl('./french.svg'),
+    );
   }
 }

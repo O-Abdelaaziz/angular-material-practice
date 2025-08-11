@@ -15,7 +15,7 @@ export type MenuItem = {
 export const menuItems: MenuItem[] = [
   {
     icon: 'dashboard',
-    label: 'Dashboard',
+    label: 'home',
     route: 'dashboard',
     extraInfo: false,
     component: DashboardComponent

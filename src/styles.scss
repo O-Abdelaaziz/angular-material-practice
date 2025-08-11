@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @include mat.core();
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
 //@use './styles/_theme-colors' as _theme-colors;
 
 //html {
@@ -25,6 +26,9 @@
   color-scheme: dark;
 }
 
+[dir="rtl"] {
+  font-family: 'Cairo', sans-serif;
+}
 
 html, body {
   height: 100%;
@@ -274,4 +278,27 @@ mb-0 {
 ::view-transition-old(.widget),
 ::view-transition-new(.widget) {
   height: 100%;
+}
+
+/* Style the entire scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: var(--mat-sys-on-primary);
+}
+
+/* Style the scrollbar thumb (the draggable handle) */
+::-webkit-scrollbar-thumb {
+  background-color: var(--mat-sys-primary); /* Color of the thumb */
+  //border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+/* Style the scrollbar track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+  background-color: var(--mat-sys-on-primary); /* Color of the track */
+}
+
+/* Style the corner where horizontal and vertical scrollbars meet */
+::-webkit-scrollbar-corner {
+  background-color: var(--mat-sys-on-primary);
 }

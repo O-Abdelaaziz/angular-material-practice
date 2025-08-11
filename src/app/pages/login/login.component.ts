@@ -29,7 +29,7 @@ export class LoginComponent {
     this.isLoading.set(true);
     setTimeout(() =>
         this.login()
-      , 5000);
+      , 50);
 
   }
   login() {

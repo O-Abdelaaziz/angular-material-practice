@@ -23,7 +23,7 @@
   border-right-color: var(--mat-sys-primary);
 }
 
-[dir="rtl"] .menu-item-label {
+[dir="rtl"] .mat-mdc-list-item-title {
   font-family: 'Cairo', sans-serif !important;
 }
 
