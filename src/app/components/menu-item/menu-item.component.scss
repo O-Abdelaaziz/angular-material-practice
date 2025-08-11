@@ -7,11 +7,15 @@
 .menu-item {
   border-left: 5px solid;
   border-left-color: transparent;
+  //--mdc-list-list-item-label-text-weight: 800 !important;
 }
 
 .selected-menu-item {
   border-left-color: var(--mat-sys-primary);
   background: rgba(0, 0, 0, 0.05);
+  @include mat.list-overrides((
+    list-item-label-text-weight: bold
+  ));
 }
 
 :host-context([dir='rtl']) .menu-item {

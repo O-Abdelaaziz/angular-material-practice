@@ -21,14 +21,38 @@
 //}
 
 
+//This overrides everything, including mat-icon which uses font-family: 'Material Icons' ,Any other icon fonts or custom fonts
+//[dir="rtl"], [dir="rtl"] * {
+//  font-family: 'Cairo', sans-serif !important;
+//}
+
+//This sets the font only on html and body
+//html[dir="rtl"], body[dir="rtl"] {
+//  font-family: 'Cairo', sans-serif !important;
+//}
+
+
+.rtl-font {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+.rtl-font * {
+  font-family: 'Cairo', sans-serif !important;
+}
+
 
 .dark-mode {
   color-scheme: dark;
 }
 
-[dir="rtl"] {
-  font-family: 'Cairo', sans-serif;
+$custom-typography: mat.m2-define-typography-config(
+  $font-family: 'Cairo, sans-serif',
+);
+
+html[dir="rtl"], body[dir="rtl"] {
+  @include mat.all-component-typographies($custom-typography);
 }
+
 
 html, body {
   height: 100%;
@@ -302,3 +326,6 @@ mb-0 {
 ::-webkit-scrollbar-corner {
   background-color: var(--mat-sys-on-primary);
 }
+
+
+

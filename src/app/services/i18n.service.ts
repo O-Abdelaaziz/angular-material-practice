@@ -2,26 +2,16 @@ import {computed, inject, Injectable, signal} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {TranslocoService} from '@jsverse/transloco';
 import {Directionality} from '@angular/cdk/bidi';
+import {LANGUAGES} from '../components/common/header/dropdown-lang/dropdown-lang.component';
+
+const LANG_STORAGE_KEY = 'app-lang';
 
 @Injectable({
   providedIn: 'root'
 })
 export class I18nService {
-  // private document = inject(DOCUMENT);
-  // private translocoService = inject(TranslocoService);
-  // private dir = inject(Directionality);
-  //
-  // setLanguage(lang: 'en' | 'fr' | 'ar') {
-  //   this.translocoService.setActiveLang(lang);
-  //   const direction = lang === 'ar' ? 'rtl' : 'ltr';
-  //   this.document.documentElement.dir = direction;
-  //   this.document.documentElement.lang = lang;
-  //   this.dir.change.emit(direction);
-  // }
-  //
-  // get currentLang() {
-  //   return this.translocoService.getActiveLang();
-  // }
+
+  public readonly languages = LANGUAGES;
 
   private document = inject(DOCUMENT);
   private translocoService = inject(TranslocoService);
@@ -39,10 +29,18 @@ export class I18nService {
   setLanguage(lang: 'en' | 'fr' | 'ar') {
     this.translocoService.setActiveLang(lang);
     this.currentLang.set(lang);
+    localStorage.setItem(LANG_STORAGE_KEY, lang);
 
     const dir = lang === 'ar' ? 'rtl' : 'ltr';
     this.document.documentElement.dir = dir;
     this.document.documentElement.lang = lang;
     this.dir.change.emit(dir);
+    // this.document.documentElement.classList.toggle('rtl-font', lang === 'ar');
+  }
+
+  constructor() {
+    const savedLang = localStorage.getItem(LANG_STORAGE_KEY) as 'en' | 'fr' | 'ar' | null;
+    const defaultLang = savedLang ?? 'en';
+    this.setLanguage(defaultLang);
   }
 }

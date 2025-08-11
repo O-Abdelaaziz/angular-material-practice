@@ -1,19 +1,30 @@
 <ng-container *transloco="let t">
-  <button mat-icon-button [matMenuTriggerFor]="menu">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Language selector">
     <mat-icon>translate</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="i18n.setLanguage('ar')" [ngClass]="{'selectedMenu': i18n.currentLang() === 'ar'}">
-      <mat-icon svgIcon="arabic"></mat-icon>
-      <span>{{t('language.arabic')}}</span>
-    </button>
-    <button mat-menu-item (click)="i18n.setLanguage('en')" [ngClass]="{'selectedMenu': i18n.currentLang() === 'en'}">
-      <mat-icon svgIcon="english"></mat-icon>
-      <span>{{t('language.english')}}</span>
-    </button>
-    <button mat-menu-item (click)="i18n.setLanguage('fr')" [ngClass]="{'selectedMenu': i18n.currentLang() === 'fr'}">
-      <mat-icon svgIcon="french"></mat-icon>
-      <span>{{t('language.french')}}</span>
-    </button>
+    @for (lang of LANGUAGES; track lang.code) {
+      <button
+        mat-menu-item
+        (click)="i18n.setLanguage(lang.code)"
+        [ngClass]="{ selectedMenu: i18n.currentLang() === lang.code }"
+      >
+        <mat-icon svgIcon="{{ lang.icon }}"></mat-icon>
+        <span>{{ t(lang.labelKey) }}</span>
+      </button>
+    }
+
+    <!--    <button mat-menu-item (click)="i18n.setLanguage('ar')" [ngClass]="{'selectedMenu': i18n.currentLang() === 'ar'}">-->
+    <!--      <mat-icon svgIcon="arabic"></mat-icon>-->
+    <!--      <span>{{t('language.arabic')}}</span>-->
+    <!--    </button>-->
+    <!--    <button mat-menu-item (click)="i18n.setLanguage('en')" [ngClass]="{'selectedMenu': i18n.currentLang() === 'en'}">-->
+    <!--      <mat-icon svgIcon="english"></mat-icon>-->
+    <!--      <span>{{t('language.english')}}</span>-->
+    <!--    </button>-->
+    <!--    <button mat-menu-item (click)="i18n.setLanguage('fr')" [ngClass]="{'selectedMenu': i18n.currentLang() === 'fr'}">-->
+    <!--      <mat-icon svgIcon="french"></mat-icon>-->
+    <!--      <span>{{t('language.french')}}</span>-->
+    <!--    </button>-->
   </mat-menu>
 </ng-container>
